@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 SHELL ["/bin/bash", "-l", "-c"]
 
-# ARG NODE_VERSION=16.13.1
+ARG NODE_VERSION=16.13.1
 ARG RUBY_VERSION=2.7.2
 ARG COCOAPODS_VERSION=1.11.2
 ARG AUTO_VERSION=10.32.5
@@ -11,10 +11,10 @@ ARG AUTO_VERSION=10.32.5
 RUN apt-get update
 RUN apt-get install -y curl git bzip2 gcc build-essential
 
-# RUN curl https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz -o node.tar.xz
-# RUN tar xvf node.tar.xz && rm node.tar.xz
+RUN curl https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz -o node.tar.xz
+RUN tar xvf node.tar.xz && rm node.tar.xz
 
-# ENV PATH=$PATH:/node-v$NODE_VERSION-linux-x64/bin
+ENV PATH=$PATH:/node-v$NODE_VERSION-linux-x64/bin
 
 # Install rbenv
 RUN apt-get update && apt-get install rbenv -y
